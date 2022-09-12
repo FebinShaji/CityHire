@@ -1,0 +1,123 @@
+.home-image {
+    background-size: cover;
+}
+
+input[type="text"]::placeholder {
+    padding-left: 15px;
+}
+
+.navbar-custom {
+    margin-left: 75px;
+    margin-right: 75px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    background-color: white;
+}
+
+.custom-li {
+    padding: 50;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
+#custom-menu {
+    width: 250px;
+}
+
+.form-control {
+    padding: 25px;
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+
+.btn-link {
+    color: black;
+}
+
+a.thick {
+    font-size: 250%;
+}
+
+.navbar {
+    margin-bottom: 0px;
+    border-radius: 0;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+}
+
+.card-text {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 200;
+    font-size: 100%;
+}
+
+footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+}
+
+#title {
+    margin-top: 50px;
+    margin-bottom: 25px;
+    border-radius: 0;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+}
+
+.card-image {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.card-title {
+    border-radius: 0;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+}
+
+.card-style {
+    min-height: 600px;
+}
+
+.extra-text {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 200;
+    font-size: 50%;
+}
+
+#input_text {
+    font-family: 'Outfit', sans-serif;
+    padding: 5px;
+    padding-left: 10px;
+    width: 100%;
+    height: 50px;
+    border-radius: 12px;
+}
+
+#thick {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 250%;
+}
+
+#sub-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 150%;
+}
+
+a:link {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+}
+
+.issuebox {
+    max-width: 70%;
+    min-height: 70%;
+}
+
+.scooteridbox {
+    max-width: 70%;
+}

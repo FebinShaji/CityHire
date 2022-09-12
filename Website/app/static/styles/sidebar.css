@@ -1,0 +1,37 @@
+.h1{
+ color: green;
+}
+
+#sidebar-Wrapper{
+    z-index: 1;
+    position:absolute;
+    width:0;
+    height: 100%;
+    overflow-y: hidden;
+    background: gray;
+    border: 2px solid red;
+    opacity: 0.9;
+}
+
+#content{
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+    border: 2px solid green;
+
+}
+
+#wrapper.sidebarDisplayed #sidebar-Wrapper{
+    width: 250px;
+}
+
+#wrapper.sidebarDisplayed #content{
+    padding-left: 250px;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+    
+    
