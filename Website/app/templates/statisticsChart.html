@@ -1,0 +1,162 @@
+{% extends "base3.html" %}
+
+{% block content %}
+<br>
+<br>
+
+<section class="section justify-content-center">
+    <div class="container section-intro">
+        <h3 class="mb-4 text-center" id="thick">
+            Statistics
+        </h3>
+        <br>
+        <div class="justify-content-center">
+
+            <div>
+                <form method="POST" action="/statistics" id="input_text">
+                    {{ form.hidden_tag() }}
+                    <div>
+                        <h4 class="card-title">Location:</h4>
+                    </div>
+                    {{ form.LocationBox(class_='form-control card-text', id_='input_text') }}
+                    {% for error in form.LocationBox.errors %}
+                    <div class="alert alert-danger w-100" role="alert">
+                        [{{ error }}]
+                    </div>
+                    {% endfor %}
+
+                    <div>
+                        <h4 class="card-title">See Stats From:</h4>
+                    </div>
+                    {{ form.timeBox(class_='form-control card-text', id_='input_text') }}
+                    {% for error in form.timeBox.errors %}
+                    <div class="alert alert-danger w-100" role="alert">
+                        [{{ error }}]
+                    </div>
+                    {% endfor %}
+
+                    <div class="text-center">
+                        <br>
+                        <button class="button btn btn-info rounded-pill is-block is-info is-fullwidth">Search</button>
+                    </div>
+                </form>
+
+                <br><br><br><br><br><br>
+            </div>
+
+            <br><br>
+
+            <div class="justify-content-center">
+
+                <div>
+                    <br>
+                    {%if numBookings%}
+                    <h3 class="mb-4 text-center" id="thick">
+                        Total Bookings
+                    </h3>
+                    <h5 class="card-title">{{numBookings}}</h5>
+                    <hr>
+                    {%else%}
+                    <div class="mb-4 text-center">
+                        <h5 class="card-title">No booking data yet!</h5>
+                    </div>
+                    {%endif%}
+
+                    {%if totalProfit%}
+                    <h3 class="mb-4 text-center" id="thick">
+                        Total Revenue (£)
+                    </h3>
+                    <h5 class="card-title">{{totalProfit}}</h5>
+                    <hr>
+                    {%endif%}
+
+                    {%if averagePricePerBooking%}
+                    <h3 class="mb-4 text-center" id="thick">
+                        Average Price Per Booking (£)
+                    </h3>
+                    <h5 class="card-title">{{averagePricePerBooking}}</h5>
+                    <hr>
+                    {%endif%}
+
+                    {%if numBookings%}
+                    <canvas id="myChart" width="1000" height="600"></canvas>
+                    <p id="caption">Daily Bookings and Revenue</p>
+                    <script>
+                        // Global parameters:
+                        // do not resize the chart canvas when its container does (keep at 600x400px)
+                        Chart.defaults.global.responsive = false;
+                        
+                        // define the chart data
+                        var chartData = {
+                        labels : [{% for item in labels %}
+                        "{{item}}",
+                        {% endfor %}],
+                        datasets : [{
+                        label: '{{ legend }}',
+                        fill: true,
+                        lineTension: 0.1,
+                        backgroundColor: "rgba(75,192,192,0.4)",
+                        borderColor: "rgba(75,192,192,1)",
+                        borderCapStyle: 'butt',
+                        borderDash: [],
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: 'miter',
+                        pointBorderColor: "rgba(75,192,192,1)",
+                        pointBackgroundColor: "#fff",
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                        pointHoverBorderColor: "rgba(220,220,220,1)",
+                        pointHoverBorderWidth: 2,
+                        pointRadius: 1,
+                        pointHitRadius: 10,
+                        data : [{% for item in values %}
+                        {{item}},
+                        {% endfor %}],
+                        spanGaps: false
+                        },
+                        {
+                        label: '{{ legend1 }}',
+                        fill: true,
+                        lineTension: 0.1,
+                        backgroundColor: "rgba(255,192,203,0.4)",
+                        borderColor: "rgba(255,192,203,1)",
+                        borderCapStyle: 'butt',
+                        borderDash: [],
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: 'miter',
+                        pointBorderColor: "rgba(255,192,203,1)",
+                        pointBackgroundColor: "#fff",
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                        pointHoverBorderColor: "rgba(220,220,220,1)",
+                        pointHoverBorderWidth: 2,
+                        pointRadius: 1,
+                        pointHitRadius: 10,
+                        data : [{% for item in values1 %}
+                        {{item}},
+                        {% endfor %}],
+                        spanGaps: false
+                        }]
+                        }
+                        
+                        // get chart canvas
+                        var ctx = document.getElementById("myChart").getContext("2d");
+                        
+                        // create the chart using the chart canvas
+                        var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: chartData,
+                        });
+                    </script>
+                    {%endif%}
+                </div>
+            </div>
+
+            <br><br>
+            
+        </div>
+</section>
+
+{% endblock %}

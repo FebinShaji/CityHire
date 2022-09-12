@@ -1,0 +1,44 @@
+{% extends "base2.html" %}
+
+{% block content %}
+
+<section class="section justify-content-center">
+    <div class="container section-intro justify-content-center">
+        <br>
+        <h3 class="mb-4 text-center" id="thick">
+            View Bookings
+        </h3>
+
+        <!-- {% if Bookings%} -->
+        <div class="container justify-content-center">
+            <div class="row ar-center justify-content-center">
+                <div class="card-deck">
+                    {% for b in Bookings %}
+                    <div class="card">
+
+                        <div class="card-body text-center">
+                            <h3 class="card-title">Booking ID: </h3>
+                            <p class="card-text"> {{ b.id }} </p>
+                            <h5 class="card-title">Date: </h5>
+                            <p class="card-text"> {{ b.dateMade }} </p>
+                            <h5 class="card-title">Expires: </h5>
+                            <p class="card-text"> {{ b.duration }} </p>
+                            <h5 class="card-title">Expired: </h5>
+                            <p class="card-text"> {{ b.expired }} </p>
+
+                            {% if b.expired == False %}
+                            <a href="/cancelBooking/{{b.id}}" class="btn btn-secondary btn-info rounded-pill">Cancel</a>
+                            <a href="/extendBooking/{{b.id}}" class="btn btn-secondary btn-info rounded-pill">Extend</a>
+                            {% endif %}
+                        </div>
+                        <br>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- {% endif %} -->
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base2.html" %}
+
+{% block content %}
+
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-12">
+        <div class="card rounded-3 text-black">
+          {% for a in scooters %}
+          <h3>{{a.id}}</h3>
+          <p>Current Booking ID: {{a.currentBookingID}}</p>
+          <p>Location ID: {{a.locationID}}</p>
+          <p>Location:
+            {% if a.locationID == 1%}
+            Trinity Centre
+            {% elif a.locationID == 2%}
+            Train Station
+            {% elif a.locationID == 3%}
+            Merrion Centre
+            {% elif a.locationID == 4%}
+            LRI Hospital
+            {% elif a.locationID == 5%}
+            UoL Edge Sports Centre
+            {% endif %}
+          </p>
+          <p>Availability:
+            {% if a.available == True%}
+            Available
+            {% else %}
+            Unavailable
+            {% endif %}
+          </p>
+          <form action="" method="post" name=completed>
+            {{ form.hidden_tag() }}
+            <p>Change Availability:
+              <input type="submit" name="submitButton" value={{a.id}}></p></br>
+          </form>
+          <hr />
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

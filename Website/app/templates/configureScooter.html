@@ -1,0 +1,74 @@
+{% extends "base3.html" %}
+
+{% block content %}
+
+<br>
+<br>
+
+<section class="section justify-content-center">
+    <div class="container section-intro">
+        <h3 class="mb-4 text-center" id="thick">
+            Configure Scooter Prices
+        </h3>
+        <br>
+        <div class="row ar-center justify-content-center">
+
+            <div class="text-center card-text">
+                <form action="" method="POST" name=configure>
+                    {{ form.hidden_tag() }}
+                    <p> Change One hour rate:
+                        <input id="small-text-box" type="text" name="hourlyRate">
+                    </p>
+                    <p> Change Four hour rate:
+                        <input id="small-text-box" type="text" name="fourHourRate">
+                    </p>
+                    <p> Change Daily rate:
+                        <input id="small-text-box" type="text" name="dailyRate">
+                    </p>
+                    <p> Change Weekly rate:
+                        <input id="small-text-box" type="text" name="weeklyRate">
+                    </p>
+                    <br>
+                    <button class="button btn btn-info rounded-pill">Submit</button>
+                    <br>
+                </form>
+                <br>
+            </div>
+
+            <div></div>
+
+            {% for scooter in scooters %}
+
+            <h3>{{scooter.id}}</h3>
+            <p>Current Booking ID: {{scooter.currentBookingID}}</p>
+            <p>Location ID: {{scooter.locationID}}</p>
+            <p>Location:
+                {% if scooter.locationID == 1%}
+                Trinity Centre
+                {% elif scooter.locationID == 2%}
+                Train Station
+                {% elif scooter.locationID == 3%}
+                Merrion Centre
+                {% elif scooter.locationID == 4%}
+                LRI Hospital
+                {% elif scooter.locationID == 5%}
+                UoL Edge Sports Centre
+                {% endif %}
+            </p>
+            <p>
+                Availability:
+                {% if scooter.available == True%}
+                Available
+                {% else %}
+                Unavailable
+                {% endif %}
+            </p>
+            <hr />
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+{% endblock %}

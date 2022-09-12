@@ -1,0 +1,53 @@
+{%if manager == 1%}
+{% extends "base3.html" %}
+{%else%}
+{% extends "base4.html" %}
+{%endif%}
+
+{% block content %}
+
+<section class="section justify-content-center">
+    <div class="container section-intro justify-content-center">
+        <br>
+        <h3 class="mb-4 text-center" id="thick">
+            View High Priority Issues
+        </h3>
+
+        {% if issues %}
+
+        <div class="container justify-content-center">
+            <div class="row ar-center justify-content-center">
+                <div class="card-deck">
+                    {% for issue in issues %}
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h2 class="card-title"> Issue ID: {{ issue.id }}</h2>
+                            <h5 class="card-title"> Issue: </h5>
+                            <p class="card-text"> {{ issue.issueText }}</p>
+                            <h5 class="card-title"> Pending: </h5>
+                            <p class="card-text"> {{ issue.pending }}</p>
+                            <h5 class="card-title"> Completed: </h5>
+                            <p class="card-text"> {{ issue.completed }}</p>
+                            <h5 class="card-title"> Customer ID: </h5>
+                            <p class="card-text"> {{ issue.customerId }}</p>
+                            <h5 class="card-title"> Scooter ID: </h5>
+                            <p class="card-text"> {{ issue.scooterId }}</p>
+                            <h5 class="card-title"> Date Made: </h5>
+                            <p class="card-text"> {{ issue.dateMade }}</p>
+                            <a href="/MarkAsCompleted/{{issue.id}}" class="btn btn-secondary btn-info rounded-pill">Mark As Completed</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <br>
+        {% else %}
+        <h5 class="card-title text-center">Oops, no issues at the moment!</h5>
+        {% endif %}
+
+        <br>
+    </div>
+</section>
+
+{% endblock %}

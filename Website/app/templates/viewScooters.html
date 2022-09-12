@@ -1,0 +1,57 @@
+{% extends "base2.html" %}
+
+{% block content %}
+
+<section class="section justify-content-center">
+    <div class="container section-intro justify-content-center">
+        <br>
+        <h3 class="mb-4 text-center" id="thick">
+            Book a Scooter
+        </h3>
+        
+        <form method="POST" action="/viewScooters/void">
+            {{ form.hidden_tag() }}
+            <div>
+                <h5 class="card-title">Location:</h5>
+            </div>
+            {{ form.LocationBox(class_='form-control card-text') }}
+            {% for error in form.LocationBox.errors %}
+            <div class="alert alert-danger w-100" role="alert">
+                [{{ error }}]
+            </div>
+            {% endfor %}
+
+            <div class="text-center">
+                <br>
+                <button class="button card-text btn btn-info rounded-pill is-block is-info is-fullwidth">Search</button>
+            </div>
+        </form>
+
+        <br>
+
+        {% if Scooters %}
+
+        <div class="container justify-content-center">
+            <div class="row ar-center justify-content-center">
+                <div class="card-deck">
+                    {% for s in Scooters %}
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <img class="card-img-top home-image-size" src="/static/images/escooter.png" alt="E-Scooter">
+                            <h2 class="card-title"> Scooter ID: </h2>
+                            <p class="card-text"> {{ s.id }} </p>
+                            <a href="/book/{{s.id}}" class="btn btn-secondary btn-info rounded-pill">Book</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+        <br><br>
+    </div>
+</section>
+
+{% endblock %}

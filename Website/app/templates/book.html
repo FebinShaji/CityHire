@@ -1,0 +1,58 @@
+{% extends "base2.html" %}
+
+{% block content %}
+
+<section class="section justify-content-center">
+  <div class="container section-intro justify-content-center">
+    <br>
+    <h3 class="mb-4 text-center" id="thick">
+      Book Scooter {{id}}
+    </h3>
+
+    <p class="mb-4 card-text text-center">
+      Almost done! Please provide your card details to continue.
+    </p>
+
+    <div class="text-center">
+      <form action="" method="POST" name="book">
+
+        {{ form.hidden_tag() }}
+        <fieldset>
+          <label class="card-text">Duration:</label><br />
+          {{ form.durationBox(class='dropdown-size') }}<br /><br />
+          {% for error in form.durationBox.errors %}
+          [{{ error }}]
+          {% endfor %}
+
+          <label class="card-text">Card Number:</label><br />
+          {{ form.CardNumber(class="book-box") }}<br /><br />
+          {% for error in form.CardNumber.errors %}
+          [{{ error }}]
+          {% endfor %}
+
+          <label class="card-text">Expiry Date:</label><br />
+          {{ form.ExpiryDate(class="book-box") }}<br /><br />
+          {% for error in form.ExpiryDate.errors %}
+          [{{ error }}]
+          {% endfor %}
+
+          <label class="card-text">CVV:</label><br />
+          {{ form.CVV(class="book-box") }}<br /><br />
+          {% for error in form.CVV.errors %}
+          [{{ error }}]
+          {% endfor %}
+
+          <label class="card-text">Use Saved Card:</label><br />
+          {{ form.useKnown(class="book-box") }}<br /><br />
+          {% for error in form.useKnown.errors %}
+          [{{ error }}]
+          {% endfor %}
+
+          <input class="button card-text btn btn-info rounded-pill is-block is-info is-fullwidth" type="submit" value="Book">
+
+      </form>
+      <br><br><br>
+    </div>
+  </div>
+</section>
+{% endblock %}

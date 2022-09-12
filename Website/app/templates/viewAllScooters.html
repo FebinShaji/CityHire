@@ -1,0 +1,60 @@
+{%if manager == 1%}
+{% extends "base3.html" %}
+{%else%}
+{% extends "base4.html" %}
+{%endif%}
+
+{% block content %}
+
+<section class="section justify-content-center">
+    <div class="container section-intro justify-content-center">
+        <br>
+        <h3 class="mb-4 text-center" id="thick">
+            View All Scooters
+        </h3>
+
+        <p class="card-text text-center">View and change the availability of a scooter.</p>
+
+
+        {% for a in scooters %}
+        <br>
+        <h3 class="card-title">{{a.id}}</h3>
+        <p class="card-text">Current Booking ID: {{a.currentBookingID}}</p>
+        <p class="card-text">Current Guest Booking ID: {{a.currentGuestBookingID}}</p>
+        <p class="card-text">Location ID: {{a.locationID}}</p>
+        <p class="card-text">Location:
+            {% if a.locationID == 1%}
+            Trinity Centre
+            {% elif a.locationID == 2%}
+            Train Station
+            {% elif a.locationID == 3%}
+            Merrion Centre
+            {% elif a.locationID == 4%}
+            LRI Hospital
+            {% elif a.locationID == 5%}
+            UoL Edge Sports Centre
+            {% endif %}
+        </p>
+        <p class="card-text">
+            Availability:
+            {% if a.available == True%}
+            Available
+            {% else %}
+            Unavailable
+            {% endif %}
+        </p>
+        <form action="" method="post" name=completed>
+            {{ form.hidden_tag() }}
+            <p class="card-text"> Change Availability:
+                <input class="availability button card-text btn btn-success" type="submit" name="submitButton" value={{a.id}}>
+            </p>
+            </br>
+        </form>
+        <hr />
+        {% endfor %}
+
+
+    </div>
+</section>
+
+{% endblock %}

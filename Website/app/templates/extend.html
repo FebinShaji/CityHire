@@ -1,0 +1,60 @@
+{% extends "base2.html" %}
+
+{% block content %}
+
+<section class="h-100 gradient-form" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-10">
+                <div class="card rounded-3 text-black">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="card-body p-md-5 mx-md-4">
+                                <form  method="POST" action="/extendBooking/{{booking.id}}">
+                                    {{ form.hidden_tag() }}
+                                    <div>
+                                        <h5>Duration To Extend:</h5>
+                                    </div>
+                                    {{ form.durationBox(class_='form-control') }}
+                                    {% for error in form.durationBox.errors %}
+                                    <div class="alert alert-danger w-100" role="alert">
+                                        [{{ error }}]
+                                    </div>
+                                    {% endfor %}
+
+                                    <div>
+                                        <h5>Discount:</h5>
+                                    </div>
+                                    {{ form.DiscountCode(class_='form-control') }}
+                                    {% for error in form.DiscountCode.errors %}
+                                    <div class="alert alert-danger w-100" role="alert">
+                                        [{{ error }}]
+                                    </div>
+                                    {% endfor %}
+            
+                                    <div class="text-center">
+                                        <br>
+                                        <button
+                                            class="button btn btn-info rounded-pill is-block is-info is-fullwidth">submit</button>
+                                    </div>
+                                </form>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-6 d-flex align-items-center"
+            style="background-image: url(/static/images/leeds-city-unblurred.png)">
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+{% endblock %}

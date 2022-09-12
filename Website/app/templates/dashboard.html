@@ -1,0 +1,101 @@
+{% extends "base2.html" %}
+
+{% block content %}
+
+<!-- Displays home page and references images in footer -->
+<br>
+<br>
+
+<section class="section justify-content-center">
+    <div class="container section-intro">
+        <h3 class="mb-4 text-center" id="thick">
+            Your Profile
+        </h3>
+        <br>
+        <div class="row ar-center justify-content-center">
+            <div class="card-deck">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <br><br><br><br>
+                        <img class="card-img-top home-image-size" src="/static/images/card.png" alt="Sign Up">
+                        <h4 class="card-title">Change Password</h4>
+                        <p class="card-text"><a class="nav-link link-to" href="/changepassword">Forgot your password? Click here to change it.</a></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img class="card-img-top home-image-size" src="/static/images/password.png" alt="Browse">
+                        <h4 class="card-title">Save Card Details</h4>
+                        <p class="card-text">Save your card details quick bookings!</p>
+
+                        <form method="POST" action="/dashboard">
+                            {{ form.hidden_tag() }}
+                            <div class="field">
+                                <div class="control">
+                                    <input class="scooteridbox" id="input_text_dashboard" type="text" name="CardNumber"
+                                        placeholder="Card Number">
+                                    {% for error in form.CardNumber.errors %}
+                                    <div class="alert alert-danger w-100" role="alert">
+                                        [{{ error }}]
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                            <br>
+                            <br>
+
+                            <div class="row gx-3 justify-content-center">
+                                <div class="col-4">
+                                    {{ form.hidden_tag() }}
+                                    <div class="field">
+                                        <div class="control">
+                                            <input class="scooteridbox" id="input_text_cvv" type="text"
+                                                name="ExpiryDate" placeholder="02/22">
+                                            {% for error in form.ExpiryDate.errors %}
+                                            <div class="alert alert-danger w-100" role="alert">
+                                                [{{ error }}]
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    {{ form.hidden_tag() }}
+                                    <div class="field">
+                                        <div class="control">
+                                            <input class="scooteridbox" id="input_text_cvv" type="text" name="CVV"
+                                                placeholder="***">
+                                            {% for error in form.CVV.errors %}
+                                            <div class="alert alert-danger w-100" role="alert">
+                                                [{{ error }}]
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <button class="button btn btn-info rounded-pill is-block is-info is-fullwidth card-text">Save</button>
+                        </form>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<br>
+<br>
+<br>
+<br>
+
+<footer>
+    <div class="text-center">
+    </div>
+</footer>
+
+{% endblock %}

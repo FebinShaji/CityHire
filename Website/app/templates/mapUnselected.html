@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Display Map</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/universal.css') }}" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+</head>
+
+<body>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <!-- Popper.JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+  <div><h1>Hello</h1></div>
+
+  <div id="map" style = "width: 100%; height: auto; padding-top: 5%;"></div>
+  <ol id="list" style="display: none;">
+  <!-- <script src="{{ url_for('static', filename='styles/universal.js') }}"></script> -->
+  <script>
+
+    var mapOptions = {
+      center: [53.801529424386935, -1.544240601573045],
+      zoom: 15
+    }
+    
+    // Creating a map object
+    var map = new L.map('map', mapOptions);
+    
+    // Creating a Layer object
+    var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+    
+    // Adding layer to the map
+    map.addLayer(layer);
+    var marker = [];
+
+    marker[0] = new L.marker([53.796653428151245, -1.5445531458811972]);
+    marker[0].addTo(map).bindPopup("<strong>Trinity centre</strong>").openPopup();
+    marker[0].on('mouseover', onMouseover);
+    marker[0].on('click', onClick);
+
+    marker[1] = new L.marker([53.794997429151714, -1.54739070170059]);
+    marker[1].addTo(map).bindPopup("<strong>Train station</strong>").openPopup();
+    marker[1].on('mouseover', onMouseover);
+    marker[1].on('click', onClick1);
+
+    marker[2] = new L.marker([53.801529424386935, -1.544240601573045]);
+    marker[2].addTo(map).bindPopup("<strong>Merrion centre</strong>").openPopup();
+    marker[2].on('mouseover', onMouseover);
+    marker[2].on('click', onClick2);
+
+    marker[3] = new L.marker([53.80264524456752, -1.5528877141497932]);
+    marker[3].addTo(map).bindPopup("<strong>LGI hospital</strong>").openPopup();
+    marker[3].on('mouseover', onMouseover);
+    marker[3].on('click', onClick3);
+
+    marker[4] = new L.marker([53.80685885334714, -1.5549791462725748]);
+    marker[4].addTo(map).bindPopup("<strong>UoL Edge sports centre</strong>").openPopup();
+    marker[4].on('mouseover', onMouseover);
+    marker[4].on('click', onClick4);
+
+    // map.setView([53.801529424386935, -1.544240601573045], 15)
+
+    function onMouseover(e) {
+      this.openPopup();
+    }
+
+    function onClick(e) {
+      window.location.replace("/viewScooters/1");
+
+    }
+
+    function onClick1(e) {
+      window.location.replace("/viewScooters/2");
+
+    }
+
+    function onClick2(e) {
+      window.location.replace("/viewScooters/3");
+
+    }
+
+    function onClick3(e) {
+      window.location.replace("/viewScooters/4");
+
+    }
+
+    function onClick4(e) {
+      window.location.replace("/viewScooters/5");
+
+    }
+  </script>
+</body>
+
+</html>

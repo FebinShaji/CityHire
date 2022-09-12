@@ -1,0 +1,82 @@
+{% extends "base2.html" %}
+
+{% block content %}
+
+
+  <div id="map" style = "width: 100%; height: 800px;"></div>
+  <ol id="list" style="display: none;">
+  <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  <script>
+
+    var mapOptions = {
+      center: [53.796653428151245, -1.5445531458811972],
+      zoom: 15
+    }
+    
+    // Creating a map object
+    var map = new L.map('map', mapOptions);
+    
+    // Creating a Layer object
+    var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+    
+    // Adding layer to the map
+    map.addLayer(layer);
+    var marker = [];
+
+    marker[0] = new L.marker([53.796653428151245, -1.5445531458811972]);
+    marker[0].addTo(map).bindPopup("<strong>Trinity centre</strong>").openPopup();
+    marker[0].on('mouseover', onMouseover);
+    marker[0].on('click', onClick);
+
+    marker[1] = new L.marker([53.794997429151714, -1.54739070170059]);
+    marker[1].addTo(map).bindPopup("<strong>Train station</strong>").openPopup();
+    marker[1].on('mouseover', onMouseover);
+    marker[1].on('click', onClick1);
+
+    marker[2] = new L.marker([53.801529424386935, -1.544240601573045]);
+    marker[2].addTo(map).bindPopup("<strong>Merrion centre</strong>").openPopup();
+    marker[2].on('mouseover', onMouseover);
+    marker[2].on('click', onClick2);
+
+    marker[3] = new L.marker([53.80264524456752, -1.5528877141497932]);
+    marker[3].addTo(map).bindPopup("<strong>LGI hospital</strong>").openPopup();
+    marker[3].on('mouseover', onMouseover);
+    marker[3].on('click', onClick3);
+
+    marker[4] = new L.marker([53.80685885334714, -1.5549791462725748]);
+    marker[4].addTo(map).bindPopup("<strong>UoL Edge sports centre</strong>").openPopup();
+    marker[4].on('mouseover', onMouseover);
+    marker[4].on('click', onClick4);
+
+
+    function onMouseover(e) {
+      this.openPopup();
+    }
+
+    function onClick(e) {
+      window.location.replace("/viewScooters/1");
+
+    }
+
+    function onClick1(e) {
+      window.location.replace("/viewScooters/2");
+
+    }
+
+    function onClick2(e) {
+      window.location.replace("/viewScooters/3");
+
+    }
+
+    function onClick3(e) {
+      window.location.replace("/viewScooters/4");
+
+    }
+
+    function onClick4(e) {
+      window.location.replace("/viewScooters/5");
+
+    }
+  </script>
+
+{% endblock %}

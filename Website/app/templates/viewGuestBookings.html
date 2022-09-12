@@ -1,0 +1,40 @@
+{% extends "base4.html" %}
+{% block content %}
+
+
+<section class="section justify-content-center">
+    <div class="container section-intro justify-content-center">
+        <br>
+        <h3 class="mb-4 text-center" id="thick">
+            Guest Bookings
+        </h3>
+
+        <p class="card-text text-center">View all current guest bookings here.</p>
+
+        {% for guest in guests %}
+        <h3 class="card-title">Name: {{guest.firstName}}</h3>
+        <p class="card-text">Surname: {{guest.surName}}</p>
+        <p class="card-text">Email: {{guest.email}}</p>
+        <p class="card-text">Card Number: {{guest.cardNum}}</p>
+        <p class="card-text">Expiry Date: {{guest.expireDate}}</p>
+        <p class="card-text">CVV: {{guest.cvv}}</p>
+        <p class="card-text">Location: {{guest.LocationName}}</p>
+        <p class="card-text">Booking duration: {{guest.duration}}</p>
+        <p class="card-text">Booking duration: {{guest.booked}}</p>
+        <form action="" method="POST" name=completed>
+            {{ form.hidden_tag() }}
+            <p class="card-text">
+                Book:
+                <input class="card-text" type="submit" name="submitButton" value={{guest.id}}>
+            </p>
+            </br>
+        </form>
+        <hr>
+        {% endfor %}
+
+        <br>
+
+    </div>
+</section>
+
+{% endblock %}
